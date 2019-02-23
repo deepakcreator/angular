@@ -1,0 +1,98 @@
+<div class="card">
+  <div class="card-header">
+    <button class="btn btn-success float-right" (click)="openPop(RequirementModal,null)">Add Requirement</button>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-12">
+        <section *ngFor=" let requirement of requirements">
+          <div class="container py-3" style="width:60%">
+            <div class="card">
+              <div class="row ">
+                <div class=" col-md-2 px-3">
+                  <img src="./assets/logos/tractor (2).png " style="width :60%; margin-top:70%; margin-left:50%">
+
+                </div>
+
+
+                <div class="col-md-7 px-3">
+                  <div class="card-block px-3">
+                    <h4 class="card-title" style="margin-left:40%">Requirement</h4>
+                    <br>
+                    <div style="margin-left:20%">
+                      <label class="row">Name : {{ requirement.Name }}</label>
+                      <label class="row">Commodity : {{requirement.commodity}} </label>
+                      <label class="row">Quantity : {{requirement.quantity}} </label>
+                      <label class="row">Discription : {{requirement.description}} </label>
+                     </div>
+                    <br>
+                  </div>
+
+                </div>
+                <div class=" col-md-3 px-3">
+                  <table>
+                    <tr>
+                      <td style="padding-top:40%; padding-left:40%"><button class="btn btn-danger" (click)="remove(requirement)">Remove</button></td>
+                    </tr>
+                    <tr>
+                      <td style="padding-top:10%; padding-left:40%"><button class="btn btn-primary" (click)="openPop(RequirementModal,requirement)">
+                          &nbsp;&nbsp;&nbsp;Edit&nbsp;&nbsp;&nbsp;&nbsp;</button></td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #RequirementModal>
+  <div class="card">
+    <div class="card-header">
+      <div class="text-center">
+        <img src="./assets/logos/vegetables.png" style="width :10%"><br>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row form-group">
+        <label class="col-sm-3">Name : </label>
+        <div class="col-sm-9">
+          <input type="text" name="name" id="name" [(ngModel)]="newApplication.Name" class="form-control"
+            style="width:90%" required>
+        </div>
+      </div>
+      <div class="row form-group">
+        <label class="col-sm-3">Commodity : </label>
+        <div class="col-sm-9">
+          <input type="text" name="type" id="type" [(ngModel)]="newApplication.commodity" class="form-control"
+            style="width:90%" required>
+        </div>
+      </div>
+      <div class="row form-group">
+        <label class="col-sm-3">Quantity : </label>
+        <div class="col-sm-9">
+          <input type="number" name="rate" id="rate" [(ngModel)]="newApplication.quantity" class="form-control"
+            style="width:90%" required>
+        </div>
+      </div>
+      <div class="row form-group">
+        <label class="col-sm-3">Description : </label>
+        <div class="col-sm-9">
+          <textarea type="text" name="description" id="description" [(ngModel)]="newApplication.description"
+            class="form-control" style="width:90%">
+          </textarea></div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="text-right">
+        <button class="btn btn-success" type="submit" (click)="save()" title="Save">Save</button>
+        <button class="btn btn-default mr-2" type="button" (click)="closePop()" title="Cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
